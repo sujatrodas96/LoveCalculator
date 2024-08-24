@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,49 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #fce4ec;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #d81b60;
         }
+
         .container {
             margin-top: 50px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px 0px #d81b60;
+            max-width: 500px;
         }
+
         .result {
             margin-top: 20px;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
+            color: #e91e63;
+        }
+
+        h1 {
+            color: #ad1457;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px #f8bbd0;
+        }
+
+        input::placeholder {
+            color: #ad1457;
+        }
+
+        .btn-primary {
+            background-color: #d81b60;
+            border-color: #d81b60;
+        }
+
+        .btn-primary:hover {
+            background-color: #ad1457;
+            border-color: #ad1457;
         }
     </style>
 </head>
+
 <body>
     <div class="container text-center">
         <h1 class="mb-4">💖 Love Calculator 💖</h1>
@@ -36,30 +68,29 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        
-    document.getElementById('loveForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+        document.getElementById('loveForm').addEventListener('submit', function (event) {
+            event.preventDefault();
 
-    var yourName = document.getElementById('yourName').value.trim().toLowerCase();
-    var partnerName = document.getElementById('partnerName').value.trim().toLowerCase();
+            var yourName = document.getElementById('yourName').value.trim().toLowerCase();
+            var partnerName = document.getElementById('partnerName').value.trim().toLowerCase();
 
-        if (yourName && partnerName) {
-            var combinedNames = yourName + partnerName;
-            var loveScore = calculateLoveScore(combinedNames);
-            document.getElementById('result').innerText = `The love score between ${yourName} and ${partnerName} is ${loveScore}%.`;
-        } else {
-            document.getElementById('result').innerText = 'Please enter both names!';
+            if (yourName && partnerName) {
+                var combinedNames = yourName + partnerName;
+                var loveScore = calculateLoveScore(combinedNames);
+                document.getElementById('result').innerText = `The love score between ${yourName} and ${partnerName} is ${loveScore}%.`;
+            } else {
+                document.getElementById('result').innerText = 'Please enter both names!';
+            }
+        });
+
+        function calculateLoveScore(names) {
+            let score = 0;
+            for (let i = 0; i < names.length; i++) {
+                score += names.charCodeAt(i);
+            }
+            return score % 101; // Score will be between 0 and 100
         }
-    });
-
-    function calculateLoveScore(names) {
-        let score = 0;
-        for (let i = 0; i < names.length; i++) {
-            score += names.charCodeAt(i);
-        }
-        return score % 101; // Score will be between 0 and 100
-    }
-
     </script>
 </body>
+
 </html>
